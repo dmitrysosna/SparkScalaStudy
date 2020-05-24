@@ -10,8 +10,6 @@ object lab01v2 {
   val resultfile = "lab01.json"
   val allMarks = new ArrayBuffer[String]
   val myMarks = new ArrayBuffer[String]
-  val marks = (1,2,3,4,5)
-
 
   def readData(f: String, Id: String): Unit = {
     val lines = Source.fromResource(f).getLines()
