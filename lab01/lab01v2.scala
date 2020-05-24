@@ -40,14 +40,13 @@ object lab01v2 {
     println("reading data")
     readData(datafile, filmId)
 
-    val myMarksList = myMarks.sortBy(x=>x).groupBy(x=>x).mapValues(_.size)
-    val allMarksList = allMarks.sortBy(x=>x).groupBy(x=>x).mapValues(_.size)
+    val myMarksList = myMarks.groupBy(x=>x).mapValues(_.size)
+    val allMarksList = allMarks.groupBy(x=>x).mapValues(_.size)
     println(myMarksList)
     println(allMarksList)
 
     println("write json result")
     writeJson(myMarksList,allMarksList,resultfile)
-
 
   }
 
