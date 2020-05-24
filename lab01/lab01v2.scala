@@ -24,16 +24,6 @@ object lab01v2 {
     println(allMarks)
   }
 
-    def countMarks(f:String):Unit={
-      val myMarksList = myMarks.sortBy(x=>x).groupBy(x=>x).mapValues(_.size)
-      val allMarksList = allMarks.sortBy(x=>x).groupBy(x=>x).mapValues(_.size)
-      println(myMarksList)
-      println(allMarksList)
-
-      println("write json result")
-      writeJson(myMarksList,allMarksList,resultfile)
-    }
-
   def writeJson(my:Map[String,Int],all:Map[String,Int],name:String):Unit={
     val head = "{\n   \"hist_film\": [  \n      "
     val filmMarks = my.toSeq.sortBy(_._1).map(x=> x._2).mkString(",\n      ")
@@ -50,8 +40,15 @@ object lab01v2 {
     println("reading data")
     readData(datafile, filmId)
 
-    println("count marks for filmId")
-    countMarks(filmId)
+    val myMarksList = myMarks.sortBy(x=>x).groupBy(x=>x).mapValues(_.size)
+    val allMarksList = allMarks.sortBy(x=>x).groupBy(x=>x).mapValues(_.size)
+    println(myMarksList)
+    println(allMarksList)
+
+    println("write json result")
+    writeJson(myMarksList,allMarksList,resultfile)
+
+
   }
 
 }
